@@ -1,0 +1,235 @@
+FORMAT: 1A
+HOST: http://attendance.smartera3s.com/
+
+# Smart Attendance Mobile API
+
+Smart Attednace APIs.
+
+
+## Register [/register]
+
+### Register from Mobile [POST]
+
+Register.
+
++ Request (application/json)
+
+        {
+            "username": "Ahmed",
+            "password": "Ahmed123",
+            "serial": "21036525"
+        }
+
++ Response 200
+
++ Response 401 (application/json)
+
+        {
+            "error": [{ 
+                "code" : "E001",
+                "Description":"Invalid Username and Password."
+            },
+            { 
+                "code" : "E002",
+                "Description":"Already Registered User."
+            }
+            ]
+        }
+
+## Login [/login]
+
+### Login from Mobile or Web [POST]
+
+Login.
+
++ Request (application/json)
+
+        {
+                "username": "Ahmed",
+                "password": "Ahmed123",
+                "serial": "21036525"
+        }  
+
++ Response 200
+
++ Response 401
+
+        {
+            "error": [{ 
+                "code" : "E001",
+                "Description":"Invalid Username and Password."
+            },
+            { 
+                "code" : "E003",
+                "Description":"Mobile Number Mismatch."
+            }
+            ]
+        }
+
+
+## Update Password [/update-password]
+
+### Update Password [POST]
+
+Update Password.
+
++ Request (application/json)
+
+        {
+                "username": "Ahmed",
+                "password": "Ahmed123",
+                "new-password": "Ahmed123",
+                "new-password-confirm": "Ahmed123",
+                "serial": "21036525"
+        }  
+
++ Response 200
+
++ Response 401 (application/json)
+
+        {
+            "error": [{ 
+                "code" : "E001",
+                "Description":"Invalid Username and Password."
+            },
+            { 
+                "code" : "E005",
+                "Description":"New password and its confirmation mismatched."
+            }
+            ]
+        }
+
++ Response 501 (application/json)
+
+        {
+            "error": [{ 
+                "code" : "E100",
+                "Description":"Cannot update password, please try again later."
+            }
+            ]
+        }
+
+
+## Check in, Check out [/check-att]
+
+### Check in, Check out [POST]
+
+Update Check in out.
+
++ Request (application/json)
+
+        {
+                "serial": "21036525",
+                "timestamp": "12-09-2016 10:30:12",
+                "att-type": "check-in",
+                "beacon-mac": "ab:3F:B2:0C"
+        } 
+
+
++ Response 200
+
++ Response 401 (application/json)
+
+        {
+            "error": [{ 
+                "code" : "E006",
+                "Description":"already check in."
+            },
+            { 
+                "code" : "E007",
+                "Description":"already check out."
+            },
+            { 
+                "code" : "E008",
+                "Description":"invalid beacon."
+            }
+            ]
+        }
+
++ Response 501 (application/json)
+
+        {
+            "error": [{ 
+                "code" : "E100",
+                "Description":"Cannot add attendance record, please try again later."
+            }
+            ]
+        }
+        
+## Heartbeat [/heartbeat]
+
+### Update Password [POST]
+
+Update Password.
+
++ Request (application/json)
+
+        {
+                "serial": "21036525",
+                "timestamp": "2016-09-21 10:30:12",
+                "beacons" :[
+                    {
+                        "beacon-mac": "ab:3F:B2:0C",
+                        "signal-strength":"15.2"
+                    }
+                ]
+        } 
+
++ Response 200
+
++ Response 401 (application/json)
+
+        {
+            "error": [{ 
+                "code" : "E001",
+                "Description":"Invalid Username and Password."
+            },
+            { 
+                "code" : "E005",
+                "Description":"New password and its confirmation mismatched."
+            }
+            ]
+        }
+
++ Response 501 (application/json)
+
+        {
+            "error": [{ 
+                "code" : "E100",
+                "Description":"Cannot update password, please try again later."
+            }
+            ]
+        }
+
+## Attendance List [/listAttedance]
+
+### Loginfrom Mobile or Web [POST]
+
++ Request (application/json)
+
+        {
+                "serial": "2031505"
+        } 
+
++ Response 200 (application/json)
+
+        [
+            {
+                "timestamp": "2016-09-21 10:30:12",
+                "att-type": "check-in"
+            },
+                        {
+                "timestamp": "2016-09-21 06:30:50",
+                "att-type": "check-out"
+            },
+                        {
+                "timestamp": "2016-09-21 10:00:8",
+                "att-type": "check-in"
+            },
+                        {
+                "timestamp": "2016-09-21 07:00:10",
+                "att-type": "check-out"
+            }
+            
+            
+        ]
