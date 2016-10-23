@@ -6,7 +6,7 @@ HOST: http://attendance.smartera3s.com/
 Smart Attednace APIs.
 
 
-## Register [/register]
+## Register [/Register]
 
 ### Register from Mobile [POST]
 
@@ -36,7 +36,7 @@ Register.
             ]
         }
 
-## Login [/login]
+## Login [/Login]
 
 ### Login from Mobile or Web [POST]
 
@@ -61,13 +61,13 @@ Login.
             },
             { 
                 "code" : "E003",
-                "Description":"Mobile Number Mismatch."
+                "Description":"Mobile Mismatch."
             }
             ]
         }
 
 
-## Update Password [/update-password]
+## Update Password [/Update_password]
 
 ### Update Password [POST]
 
@@ -78,8 +78,8 @@ Update Password.
         {
                 "username": "Ahmed",
                 "password": "Ahmed123",
-                "new-password": "Ahmed123",
-                "new-password-confirm": "Ahmed123",
+                "new_password": "Ahmed123",
+                "new_password_confirm": "Ahmed123",
                 "serial": "21036525"
         }  
 
@@ -110,7 +110,7 @@ Update Password.
         }
 
 
-## Check in, Check out [/check-att]
+## Check in, Check out [/Check_att]
 
 ### Check in, Check out [POST]
 
@@ -137,11 +137,11 @@ Update Check in out.
         {
             "error": [{ 
                 "code" : "E006",
-                "Description":"already check in."
+                "Description":"already checked in."
             },
             { 
                 "code" : "E007",
-                "Description":"already check out."
+                "Description":"already checked out."
             },
             { 
                 "code" : "E008",
@@ -205,7 +205,7 @@ Update Password.
             ]
         }
 
-## Attendance List [/listAttedance]
+## Attendance List [/ListAttedance]
 
 ### List Attendance Records for this Mobile [POST]
 
@@ -221,26 +221,26 @@ Update Password.
             "history": [
             {
                 "timestamp": "2016-09-21 10:30:12",
-                "att-type": "check-in"
+                "att_type": "check-in"
             },
                         {
                 "timestamp": "2016-09-21 06:30:50",
-                "att-type": "check-out"
+                "att_type": "check-out"
             },
                         {
                 "timestamp": "2016-09-21 10:00:8",
-                "att-type": "check-in"
+                "att_type": "check-in"
             },
                         {
                 "timestamp": "2016-09-21 07:00:10",
-                "att-type": "check-out"
+                "att_type": "check-out"
             }
             
             
         ]
         }
         
-## Beacons List [/listBeacons]
+## Beacons List [/ListBeacons]
 
 ### List Beacons associated for this Mobile [POST]
 
